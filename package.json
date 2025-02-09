@@ -1,0 +1,22 @@
+{
+  "name": "2.1.nodeserver",
+  "version": "1.0.0",
+  "description": "npm init",
+  "main": "node index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lvhacker1/2.1.NodeServer.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Lava Sharif",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lvhacker1/2.1.NodeServer/issues"
+  },
+  "homepage": "https://github.com/Lvhacker1/2.1.NodeServer#readme"
+}
