@@ -12,7 +12,6 @@ http.createServer((req, res) => {
 
     res.write(`
         <style>
-
         body {
         background-color: rgb(14, 14, 62);
         text-align: center;
@@ -33,8 +32,6 @@ http.createServer((req, res) => {
         display: inline-block;
         padding: 10px;
         }
-        
-
         </style>
     `)
 
