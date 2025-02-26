@@ -1,7 +1,7 @@
 const http = require("http");
 const url = require("url");
 const fs = require("fs");
-const PORT = 8080
+const PORT = 8000
 
 http.createServer((req, res) => {
     const fullpath = url.parse(req.url, true);
@@ -23,6 +23,13 @@ http.createServer((req, res) => {
         align-items: center;
         }
 
+        .links {
+        position: fixed;
+        padding: 24px;
+        top: 0;
+        width: 100%;
+        }
+        
         .container {
         max-width: 420px;
         }
@@ -42,13 +49,19 @@ http.createServer((req, res) => {
         res.write("<p>Link to routes below</p>");
         res.write("<a href='/about'>About</a>");
         res.write("<a href='/candy'>Candy</a>");
-     
         res.write("<a href='/fruits'>Fruits</a>");
+        res.write("<a href='/extra'>Extra</a>")
         res.write('</div>')
         res.end();
     }
 
      else if (fullpath.pathname === "/about") {
+        res.write('<div class="links">')
+        res.write("<a href='/'>Home</a>");
+        res.write("<a href='/candy'>Candy</a>");
+        res.write("<a href='/fruits'>Fruits</a>");
+        res.write("<a href='/extra'>Extra</a>")
+        res.write('</div>')
         res.write('<div class="container">')
         res.write("<h1>I want to travel the world to:</h1>");
         res.write("<p>See nature</p>");
@@ -70,6 +83,12 @@ http.createServer((req, res) => {
 
      } else if (fullpath.pathname === "/candy") {
         if (!queries.name && !queries.pathname) {
+            res.write('<div class="links">')
+            res.write("<a href='/'>Home</a>");
+            res.write("<a href='/about'>About</a>");
+            res.write("<a href='/fruits'>Fruits</a>");
+            res.write("<a href='/extra'>Extra</a>")
+            res.write('</div>')
             res.write('<div class="container">');
             res.write("<h1>Discover My Favorite Snacks Through Queries</h1>")
             res.write("<a href='/candy?name=chocolate'>Chocolate</a>");
@@ -83,6 +102,13 @@ http.createServer((req, res) => {
                 if (err) {
                     res.write("<p>Error loading chcocolate content</p>")
                 } else {
+                    res.write('<div class="links">')
+                    res.write("<a href='/'>Home</a>");
+                    res.write("<a href='/about'>About</a>");
+                    res.write("<a href='/candy'>Candy</a>");
+                    res.write("<a href='/fruits'>Fruits</a>");
+                    res.write("<a href='/extra'>Extra</a>")
+                    res.write('</div>')
                     res.write('<div class="container">');
                     res.write(data)
                     res.write('</div>')
@@ -94,6 +120,13 @@ http.createServer((req, res) => {
                 if (err) {
                     res.write("<p>Error loading chips content</p>");
                 } else {
+                    res.write('<div class="links">')
+                    res.write("<a href='/'>Home</a>");
+                    res.write("<a href='/about'>About</a>");
+                    res.write("<a href='/candy'>Candy</a>");
+                    res.write("<a href='/fruits'>Fruits</a>");
+                    res.write("<a href='/extra'>Extra</a>")
+                    res.write('</div>')
                     res.write('<div class="container">');
                     res.write(data)
                     res.write('</div>')
@@ -101,7 +134,7 @@ http.createServer((req, res) => {
                 res.end()
             });
         }
-     } else if (fullpath.pathname === "/fruits") {
+    } else if (fullpath.pathname === "/fruits") {
         fs.readFile('./data/fruits.html', (err, data) => {
                 if (err) {
                     res.write("<p>Error loading footer content</p>");
@@ -110,7 +143,15 @@ http.createServer((req, res) => {
                 }
                 res.end()
             });
-
+    } else if (fullpath.pathname === "/extra") {
+        fs.readFile('./data/extra.html', (err, data) => {
+                if (err) {
+                    res.write("<p>Error loading footer content</p>");
+                } else {
+                    res.write(data)
+                }
+                res.end()
+            });
         } else {
             res.write("<h1>404 Page not found</h1>");
             res.end();
